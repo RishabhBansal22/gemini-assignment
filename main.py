@@ -32,8 +32,8 @@ def generate_content(subject, job, topics):
 st.title("AI Practice Question Generator")
 
 with st.form("input_form"):
-    subject = st.text_input("ENTER SUBJECT", placeholder="e.g. python")
     job = st.text_input("ENTER COURSE/JOB TITLE", placeholder="e.g. Data Scientist")
+    subject = st.text_input("ENTER SUBJECT", placeholder="e.g. python")
     topics = st.text_area("enter topics (comma-separated)", placeholder="e.g. Topic 1, Topic 2, Topic 3")
     submitted = st.form_submit_button("Generate Questions")
 
