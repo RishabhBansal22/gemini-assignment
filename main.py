@@ -1,7 +1,6 @@
 import streamlit as st
 from google import genai
-from googleapiclient.discovery import build
-from google.oauth2.credentials import Credentials
+
 import os
 from dotenv import load_dotenv
 
