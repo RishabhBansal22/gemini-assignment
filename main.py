@@ -7,18 +7,19 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # Function to generate content using Gemini
-def generate_content(subject, job, topics):
+def generate_content(topics):
     client = genai.Client(api_key=os.getenv("api_key"), vertexai=False)
     prompt = f"""
-        I am learning {subject} to become a {job}. Below is the list of topics I have studied so far:
+        I am learning SQL to become a Buiseness analyst. Below is the list of topics I have studied so far:
         {', '.join(topics)}.
 
         Your task:
         1. Generate **exactly 5 practice questions** for each topic listed above.
-        2. Ensure all questions are **practical and relevant** to real-world {job} applications.
+        2. Ensure all questions are **practical and relevant** to real-world buiseness analyst job applications.
         3. Do **not include questions** unrelated to the topics provided.
         4. Do **not provide answers** to the questions.
-        5. Provide sample data or scenarios where applicable like sample datasets, code snippets, or case studies.
+        5. Always Provide sample data in sql query language to solve quesions and ensure that all quesions must be able to solve with the sample data.
+        6. Ensure the questions are **diverse** and cover different aspects of the topics.
 
         Output format:
         - Use a **well-structured assignment format**.
@@ -31,17 +32,17 @@ def generate_content(subject, job, topics):
     return response.text
     
 
-st.title("AI Practice Question Generator")
+st.title("SQL Practice Question Generator")
+
 
 with st.form("input_form"):
-    job = st.text_input("ENTER COURSE/JOB TITLE", placeholder="e.g. Data Scientist")
-    subject = st.text_input("ENTER SUBJECT", placeholder="e.g. python")
-    topics = st.text_area("enter topics (comma-separated)", placeholder="e.g. Topic 1, Topic 2, Topic 3")
+   
+    topics = st.text_area("Enter SQl Topics (comma-separated)", placeholder="e.g. Topic 1, Topic 2, Topic 3")
     submitted = st.form_submit_button("Generate Questions")
 
 if submitted:
     topics_list = [t.strip() for t in topics.split(",")]
-    ai_response = generate_content(subject, job, topics_list)
+    ai_response = generate_content( topics_list)
     st.session_state['ai_response'] = ai_response
     st.markdown("### Generated Practice Questions")
     st.write(ai_response)
