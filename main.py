@@ -18,6 +18,7 @@ def generate_content(subject, job, topics):
         2. Ensure all questions are **practical and relevant** to real-world {job} applications.
         3. Do **not include questions** unrelated to the topics provided.
         4. Do **not provide answers** to the questions.
+        5. Provide sample data or scenarios where applicable like sample datasets, code snippets, or case studies.
 
         Output format:
         - Use a **well-structured assignment format**.
