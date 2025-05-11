@@ -29,6 +29,7 @@ def generate_content(subject, job, topics):
         contents=[prompt]
     )
     return response.text
+    
 
 st.title("AI Practice Question Generator")
 
